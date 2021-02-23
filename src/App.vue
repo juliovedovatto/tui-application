@@ -1,27 +1,26 @@
 <template>
-  <img
-    alt="Vue logo"
-    src="./assets/logo.png"
-  >
+  <div class="container mx-auto site">
+    <site-header />
 
-  <router-view />
+    <div class="site__content">
+      <router-view />
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
+import { Header } from '@/components/layout'
+
 export default defineComponent({
-  name: 'App'
+  name: 'App',
+  components: {
+    SiteHeader: Header
+  }
 })
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss" scoped>
+
 </style>

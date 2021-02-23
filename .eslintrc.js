@@ -12,13 +12,13 @@ module.exports = {
   extends: [
     'plugin:vue/vue3-recommended',
     'eslint:recommended',
-    '@vue/typescript/recommended',
-    'prettier'
+    'prettier',
+    '@vue/typescript/recommended'
   ],
   parserOptions: {
     ecmaVersion: 2021
   },
-  plugins: [],
+  plugins: ['vue'],
   rules: {
     'no-console': isEnvProduction ? 'warn' : 'off',
     'no-debugger': isEnvProduction ? 'warn' : 'off'

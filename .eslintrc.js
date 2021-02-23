@@ -1,26 +1,26 @@
+const { NODE_ENV = '' } = process.env
+
+const isEnvProduction = NODE_ENV === 'production'
+
 module.exports = {
-  "root": true,
-  "env": {
-    "browser": true,
-    "es2021": true,
-    "node": true
+  root: true,
+  env: {
+    browser: true,
+    es2021: true,
+    node: true
   },
-  "extends": [
-    "plugin:vue/vue3-recommended",
-    "eslint:recommended",
-    "@vue/typescript/recommended",
-    // "prettier",
-    // "prettier/vue",
-    // "prettier/@typescript-eslint"
+  extends: [
+    'plugin:vue/vue3-recommended',
+    'eslint:recommended',
+    '@vue/typescript/recommended',
+    'prettier'
   ],
-  "parserOptions": {
-    "ecmaVersion": 2021
+  parserOptions: {
+    ecmaVersion: 2021
   },
-  "plugins": [],
+  plugins: [],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'space-before-function-paren': ['error', 'never'],
-    'comma-dangle': ['error', 'only-multiline'],
+    'no-console': isEnvProduction ? 'warn' : 'off',
+    'no-debugger': isEnvProduction ? 'warn' : 'off'
   }
 }

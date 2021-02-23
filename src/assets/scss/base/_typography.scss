@@ -1,0 +1,28 @@
+@use '../abstracts/variables' as *;
+
+@font-face {
+  font-family: 'TUIType';
+  src: local('TUIType Light Bold'), local('TUIType-LightBold'),
+      url('@/assets/fonts/TUIType-LightBold.woff2') format('woff2'),
+      url('@/assets/fonts/TUIType-LightBold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TUIType';
+  src: local('TUIType Light Regular'), local('TUIType-Light'),
+      url('@/assets/fonts/TUIType-Light.woff2') format('woff2'),
+      url('@/assets/fonts/TUIType-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  color: $color-text;
+  font: normal 14px $font-default;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

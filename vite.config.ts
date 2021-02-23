@@ -11,5 +11,16 @@ export default defineConfig({
     alias: [
       { find: '@', replacement: path.resolve(__dirname, 'src') }
     ]
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+          @use '@/assets/scss/abstracts/variables' as *;
+          @use '@/assets/scss/abstracts/mixins' as *;
+          @use '@/assets/scss/abstracts/functions' as *;
+        `
+      }
+    }
   }
 })

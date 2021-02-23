@@ -1,0 +1,61 @@
+// a BEM element() mixin--as has been seen elsewhere
+@mixin element($name) {
+  @at-root {
+    #{&}__#{$name} {
+      @content;
+    }
+  }
+}
+
+// the BEM modifier() mixin
+@mixin modifier($name) {
+  @at-root {
+    $selector: nth(&, 1);
+    $direct-parent: nth($selector, length($selector));
+
+    #{$direct-parent}--#{$name} {
+      @extend #{$direct-parent};
+    }
+
+    #{&}--#{$name} {
+      @content;
+    }
+  }
+}
+
+// BEM shortcuts
+@mixin e($name) {
+  @at-root {
+    @include element($name) {
+      @content;
+    }
+  }
+}
+
+@mixin m($name) {
+  @at-root {
+    @include modifier($name) {
+      @content;
+    }
+  }
+}
+
+// Maintain Aspect Ratio Mixin
+@mixin aspect-ratio($ratioWidth, $ratioHeight, $childSelector: '> :first-child') {
+  position: relative;
+
+  &:before {
+    display: block;
+    width: 100%;
+    padding-top: ($ratioHeight / $ratioWidth) * 100%;
+    content: '';
+  }
+
+  #{$childSelector} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

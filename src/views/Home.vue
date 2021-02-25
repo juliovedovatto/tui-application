@@ -2,13 +2,14 @@
   <h1>Home</h1>
 
   <div>
-    {{ offers }}
+    <hotels-list :items="offers" />
   </div>
 </template>
 
 <script setup lang="ts">
   import store from '@/store'
   import { onBeforeMount, computed } from 'vue'
+  import { HotelsList } from '@/components/lists'
 
   const offers = computed(() => store.getters['hotels/items'])
 

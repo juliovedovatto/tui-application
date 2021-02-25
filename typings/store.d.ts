@@ -7,6 +7,7 @@ export interface HotelOfffersStateStorable {
 export interface HotelOfffersStateStorableItem {
   hotelId: string
   name: string
+  description: string
   cityCode: string
   latitude: number
   longitude: number

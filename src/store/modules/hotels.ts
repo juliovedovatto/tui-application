@@ -29,6 +29,7 @@ export default {
       const { hotel, offers } = payload
       const {
         hotelId,
+        description,
         name,
         cityCode,
         amenities,
@@ -43,22 +44,25 @@ export default {
 
         return {
           id,
-          description: room.description,
+          description: room.description?.text || '',
           guests: sum(Object.values<number>(guests)),
           price: `${price.total} ${price.currency}`
         }
       })
 
+      const [ mediaItem ] = media || []
+
       const item: HotelOfffersStateStorableItem = {
         hotelId,
         name,
+        description: description?.text || '',
         cityCode,
         latitude,
         longitude,
         address: '', // TODO: retrieve hotel address
         contact: contact?.phone || '',
         amenities,
-        media: media?.url || '',
+        media: mediaItem?.uri || '',
         offers: normalizedOffers
       }
 

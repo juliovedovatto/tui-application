@@ -16,7 +16,8 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: '@', replacement: resolve(__dirname, 'src') },
-      { find: '@typings', replacement: resolve(__dirname, 'typings') }
+      { find: '@typings', replacement: resolve(__dirname, 'typings') },
+      { find: '@images', replacement: resolve(__dirname, 'src/assets/images') }
     ]
   },
   css: {

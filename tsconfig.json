@@ -14,6 +14,7 @@
     "paths": {
       "@/*": ["src/*"],
       "@typings/*": ["typings/*"],
+      "@images/*": ["src/assets/images/*"]
     },
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "typings/**/*.d.ts"],

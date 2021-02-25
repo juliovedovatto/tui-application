@@ -1,3 +1,4 @@
+import EnvCompatible from 'vite-plugin-env-compatible'
 import ViteESLint from '@ehutch79/vite-eslint'
 import Vue from '@vitejs/plugin-vue'
 import WindiCSS from 'vite-plugin-windicss'
@@ -7,9 +8,10 @@ import { resolve } from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    EnvCompatible(),
     ViteESLint(),
     WindiCSS({ preflight: false }),
-    Vue()
+    Vue(),
   ],
   resolve: {
     alias: [

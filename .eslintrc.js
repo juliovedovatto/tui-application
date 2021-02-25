@@ -23,6 +23,35 @@ module.exports = {
     'no-console': isEnvProduction ? 'warn' : 'off',
     'no-debugger': isEnvProduction ? 'warn' : 'off',
 
+    // VUE
+    'vue/attributes-order': [
+      'warn',
+      {
+        order: [
+          /*
+            DEFINITION e.g. 'is', 'v-is'
+            LIST_RENDERING e.g. 'v-for item in items'
+            CONDITIONALS e.g. 'v-if', 'v-else-if', 'v-else', 'v-show', 'v-cloak'
+            RENDER_MODIFIERS e.g. 'v-once', 'v-pre'
+            GLOBAL e.g. 'id'
+            UNIQUE e.g. 'ref', 'key', 'v-slot', 'slot'
+            TWO_WAY_BINDING e.g. 'v-model'
+            OTHER_DIRECTIVES e.g. 'v-custom-directive'
+            OTHER_ATTR e.g. 'custom-prop="foo"', 'v-bind:prop="foo"', ':prop="foo"'
+            EVENTS e.g. '@click="functionCall"', 'v-on="event"'
+            CONTENT e.g. 'v-text', 'v-html'
+          */
+          ['DEFINITION', 'UNIQUE', 'GLOBAL'],
+          'TWO_WAY_BINDING',
+          'OTHER_DIRECTIVES',
+          'OTHER_ATTR',
+          'EVENTS',
+          ['LIST_RENDERING', 'RENDER_MODIFIERS', 'CONTENT', 'CONDITIONALS']
+        ],
+        alphabetical: false
+      }
+    ],
+
     // TYPESCRIPT
     "@typescript-eslint/no-this-alias": [
       "error",

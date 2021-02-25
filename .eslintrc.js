@@ -21,6 +21,14 @@ module.exports = {
   plugins: ['vue'],
   rules: {
     'no-console': isEnvProduction ? 'warn' : 'off',
-    'no-debugger': isEnvProduction ? 'warn' : 'off'
+    'no-debugger': isEnvProduction ? 'warn' : 'off',
+
+    // TYPESCRIPT
+    "@typescript-eslint/no-this-alias": [
+      "error",
+      {
+        "allowedNames": ["self"]
+      }
+    ]
   }
 }

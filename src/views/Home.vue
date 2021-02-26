@@ -7,15 +7,17 @@
 </template>
 
 <script setup lang="ts">
-  import store from '@/store'
+  import { useStore } from '@/store'
   import { onBeforeMount, computed } from 'vue'
   import { HotelsList } from '@/components/lists'
+
+  const store = useStore()
 
   const offers = computed(() => store.getters['hotels/items'])
 
   onBeforeMount(async () => {
     store.dispatch('hotels/clear')
-    await store.dispatch('hotels/list', 'LON')
+    await store.dispatch('hotels/list', { cityCode: 'PAR', sort: 'PRICE' })
   })
 </script>
 

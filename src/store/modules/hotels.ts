@@ -15,8 +15,9 @@ export default {
     }
   },
   actions: {
-    async list({ commit }, payload: string)  {
-      const data = await Hotels.listCity(payload)
+    async list({ commit }, payload: PlainObject)  {
+      const { cityCode, sort } = payload
+      const data = await Hotels.listCity(cityCode, sort)
 
       data.forEach(item => commit('set', item))
     },

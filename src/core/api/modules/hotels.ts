@@ -70,10 +70,18 @@ export class Hotels extends API {
     this.accessToken = access_token
   }
 
-  async listCity(city: string): Promise<PlainObject[]> {
+  async listCity(cityCode: string, sort: string): Promise<PlainObject[]> {
     await this.preflight();
 
-    const { data: { data } } = await this.request.get('v2/shopping/hotel-offers', { params: { cityCode: city } })
+    const { data: { data } } = await this.request.get(
+      'v2/shopping/hotel-offers',
+      {
+        params: {
+          cityCode,
+          sort
+        }
+      }
+    )
 
     return data
   }

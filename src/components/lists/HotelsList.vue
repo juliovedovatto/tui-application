@@ -34,7 +34,10 @@ import HotelMarkupImage from '@images/markup/hotel-markup.svg'
 import { Truncate } from '@/components/readmore'
 
 const props = defineProps({
-  items: {}
+  items: {
+    type: Object,
+    default: () => ({})
+  }
 })
 
 function getItemImage(item) {

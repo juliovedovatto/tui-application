@@ -1,6 +1,7 @@
 import EnvCompatible from 'vite-plugin-env-compatible'
 import ViteESLint from '@ehutch79/vite-eslint'
 import Vue from '@vitejs/plugin-vue'
+import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import WindiCSS from 'vite-plugin-windicss'
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
@@ -12,6 +13,9 @@ export default defineConfig({
     ViteESLint(),
     WindiCSS({ preflight: false }),
     Vue(),
+    VueI18n({
+      include: resolve(__dirname, 'src/locales/*.json')
+    })
   ],
   resolve: {
     alias: [

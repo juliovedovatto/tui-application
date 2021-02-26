@@ -1,0 +1,18 @@
+{
+  "date": {
+    "full": "MM/dd/YYYY",
+    "short": "MM/dd",
+    "localized": {
+      "short": "MM/dd/yyyy",
+      "full": "MMM d, yyyy"
+    },
+    "datetime": {
+      "short": "MM/dd/yyyy, h:mm a",
+      "full": "MMM d, yyyy, h:mm a"
+    },
+    "time": {
+      "short": "h:mm a",
+      "full": "h:mm a"
+    }
+  }
+}

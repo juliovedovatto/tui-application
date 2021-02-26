@@ -7,7 +7,7 @@ function loadLocaleMessages(): PlainObject {
   const messages: PlainObject = {}
 
   Object.keys(locales).forEach(key => {
-    const [_, language] = key.match(/([A-Za-z0-9-_]+)\./i) || []
+    const [, language] = key.match(/([A-Za-z0-9-_]+)\./i) || []
     if (language) {
       messages[language] = locales[key].default
     }

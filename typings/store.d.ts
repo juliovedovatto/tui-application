@@ -22,3 +22,7 @@ export interface HotelOfffersStateStorableItem {
     price: string
   }[]
 }
+
+export interface WeatherStateStorable {
+  forecast: PlainObject[]
+}

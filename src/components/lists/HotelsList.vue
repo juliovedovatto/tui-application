@@ -26,6 +26,8 @@
 </template>
 
 <script setup name="HotelsList" lang="ts">
+// TODO: add tooltip to show full text
+
 import { defineProps } from "vue"
 import HotelMarkupImage from '@images/markup/hotel-markup.svg'
 

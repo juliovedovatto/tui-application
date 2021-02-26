@@ -1,5 +1,4 @@
 import API from '../main'
-import { APIResponse } from 'typings/api'
 import { WEATHER_API_KEY } from '@/core/config'
 
 export enum COUNTRY_CODES {
@@ -13,14 +12,12 @@ export class Weather extends API {
   constructor() {
     super()
 
-    this.request.defaults.baseURL = 'https://api.openweathermap.org/data/2.5'
-    this.request.defaults.params = { ...this.request.defaults.params, appid: WEATHER_API_KEY }
+    this.request.defaults.baseURL = 'http://api.weatherapi.com/v1'
+    this.request.defaults.params = { ...this.request.defaults.params, key: WEATHER_API_KEY }
   }
 
-  async fetchCity(city: string, countryCode: Maybe<COUNTRY_CODES>): APIResponse {
-    const q = `${city}${countryCode ? `,${countryCode}` : ''}`
-
-    const { data } = await this.request.get('/weather', { params: { q } })
+  async listCity(city: string, days: number): Promise<PlainObject> {
+    const { data } = await this.request.get<PlainObject>('/forecast.json', { params: { q: city, days } })
 
     return data
   }

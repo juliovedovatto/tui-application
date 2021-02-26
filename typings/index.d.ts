@@ -1,3 +1,5 @@
+/// <reference types="resize-observer-browser" />
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
-type PlainObject = Record<string, any>
-type Maybe<T> = T | null
+declare type PlainObject = Record<string, any>
+declare type Maybe<T> = T | null

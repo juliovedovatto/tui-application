@@ -8,8 +8,10 @@
     "lint": "eslint --ext .ts,vue --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@types/luxon": "^1.26.0",
     "axios": "^0.21.1",
     "lodash-es": "^4.17.21",
+    "luxon": "^1.26.0",
     "qs": "^6.9.6",
     "uuid": "^8.3.2",
     "vue": "^3.0.6",

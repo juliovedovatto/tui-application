@@ -7,7 +7,7 @@
         </picture>
         <div classs="content">
           <h3>{{ item.name }}</h3>
-          <p>{{ item.description }}</p>
+          <truncate>{{ item.description }}</truncate>
 
           <div class="mt-4 p-6 bg-gray-50 offers">
             <h4>Offers</h4>
@@ -29,8 +29,10 @@
 import { defineProps } from "vue"
 import HotelMarkupImage from '@images/markup/hotel-markup.svg'
 
+import { Truncate } from '@/components/readmore'
+
 const props = defineProps({
-    items: {}
+  items: {}
 })
 
 function getItemImage(item) {

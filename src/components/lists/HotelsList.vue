@@ -50,7 +50,7 @@ function getItemImage(item) {
 <style lang="scss" scoped>
 .hotels__list {
   @include e('item') {
-    grid-template-columns: minmax(auto, 400px) auto;
+    grid-template-columns: minmax(auto, 200px) auto;
   }
 }
 </style>

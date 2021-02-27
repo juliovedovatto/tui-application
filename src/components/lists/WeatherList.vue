@@ -2,7 +2,7 @@
   <div class="weather__list">
     <div class="flex">
       <div :key="`weather-${i}`" class="text-center mr-4 weather" v-for="(item, i) in items">
-        <time :datetime="item.date">{{ formatLocale(item.date) }}</time>
+        <time :datetime="item.date">{{ formatDate(item.date) }}</time>
         <picture class="block">
           <img :src="item.icon" />
         </picture>
@@ -16,8 +16,11 @@
 // TODO: add tooltip to show full text
 
 import { defineProps } from "vue"
+import { useI18n } from "vue-i18n"
 
 import { formatLocale } from '@/core/helpers/date'
+
+const { t } = useI18n()
 
 const props = defineProps({
   items: {
@@ -25,6 +28,10 @@ const props = defineProps({
     default: () => ({})
   }
 })
+
+function formatDate(date: string): string {
+  return formatLocale(date, t('date.short'))
+}
 </script>
 
 <style lang="scss" scoped>

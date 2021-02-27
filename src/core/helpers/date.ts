@@ -5,5 +5,5 @@ export function format(date: string, format: string): string {
 }
 
 export function formatLocale(date: string, locale: string): string {
-  return format(date, 'LL/dd/yyyy')
+  return format(date, locale)
 }

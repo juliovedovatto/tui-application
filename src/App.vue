@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto site">
+  <div class="site">
     <site-header />
 
     <div class="site__content">

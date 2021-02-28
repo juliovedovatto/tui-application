@@ -13,6 +13,8 @@
     $selector: nth(&, 1);
     $direct-parent: nth($selector, length($selector));
 
+    // smal trick to ensure modifier will inherit style from its ancestor.
+    // https://sass-lang.com/documentation/at-rules/extend
     #{$direct-parent}--#{$name} {
       @extend #{$direct-parent};
     }

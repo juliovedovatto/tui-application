@@ -8,3 +8,20 @@ h1,h2,h3,h4,h5,h6,h7 {
     @apply text-#{$text-size}xl;
   }
 }
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+
+  background: transparent;
+
+  font: inherit;
+  line-height: normal;
+
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  appearance: none;
+}

@@ -1,6 +1,10 @@
 // https://github.com/HugoGiraudel/sass-boilerplate
 
-@import './base/reset';
-@import './base/typography';
+@import
+  './base/reset',
+  './base/typography';
+
+@import
+  './components/button';
 
 // TODO: add rest of SASS files

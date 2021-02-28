@@ -1,0 +1,38 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+
+.button {
+  @apply px-4 py-2 rounded text-lg inline-block;
+
+  background-color: $tui-grey-25u;
+  border: 1px solid $tui-grey-75;
+  cursor: pointer;
+  text-decoration: none;
+  color: $color-text;
+
+  &:hover {
+    background-color: $tui-grey-25;
+  }
+
+  @include m('primary') {
+    background-color: $tui-red-25u;
+    border: 1px solid $tui-red-50;
+    color: #fff;
+
+    &:hover {
+      background-color: $tui-red-25;
+    }
+  }
+
+  @include m('secondary') {
+  // &#{&}--secondary {
+    background-color: $tui-dark-25u;
+    border: 1px solid $tui-blue-400;
+    color: #fff;
+
+    &:hover {
+      background-color: $tui-dark-25;
+    }
+  }
+}

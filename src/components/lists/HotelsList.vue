@@ -11,11 +11,9 @@
 
           <div class="mt-4 p-6 bg-gray-50 offers">
             <h4>Offers</h4>
-            <ul class="offers__list">
-              <li :key="`offer-${offerIndex}`" class="offers__list_item" v-for="(offer, offerIndex) in item.offers">
-                <h5>{{ offer.price }}</h5>
-                <h6 class="mb-4">{{ offer.guests  }} Guest(s)</h6>
-                <em>{{ offer.description }}</em>
+            <ul class="hotel__offers__list">
+              <li :key="`offer-${offerIndex}`" class="hotel__offers_item" v-for="(offer, offerIndex) in item.offers">
+                <hotel-offer-card :item="offer" />
               </li>
             </ul>
           </div>
@@ -30,6 +28,8 @@
 
 import { defineProps } from "vue"
 import HotelMarkupImage from '@images/markup/hotel-markup.svg'
+
+import { HotelOfferCard } from '@/components/cards'
 
 import { Truncate } from '@/components/readmore'
 

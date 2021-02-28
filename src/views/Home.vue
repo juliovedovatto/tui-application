@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup name="HomeView" lang="ts">
   import { useStore } from '@/store'
   import { onBeforeMount, computed } from 'vue'
   import { HotelsList, WeatherList } from '@/components/lists'

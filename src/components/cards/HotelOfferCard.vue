@@ -7,7 +7,7 @@
         <em>{{ item.description }}</em>
       </div>
       <div class="hotel__offer__actions">
-        <router-link :to="'#'" class="button--primary mr-3">{{ t('actions.details') }}</router-link>
+        <router-link :to="{ name: 'offer', params: { offer: item.id } }" class="button--primary mr-3">{{ t('actions.details') }}</router-link>
         <router-link :to="'#'" class="button--secondary mr-3">{{ t('actions.get-offer') }}</router-link>
       </div>
     </div>

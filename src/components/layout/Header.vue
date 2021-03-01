@@ -1,30 +1,28 @@
 <template>
   <header class="site__header">
-    <h1 class="site__header__title">TUI Application</h1>
-    <img
-      alt="Vue logo"
-      src="./assets/logo.png"
-    >
+    <div class="container mx-auto">
+      <h1 class="site__header__title" :style="{ backgroundImage: `url('${Logo}')` }">
+        TUI Application
+      </h1>
+    </div>
   </header>
 </template>
 
-<script>
-// import { defineComponent } from "vue";
-
-// export default defineComponent({
-//   props: [
-//     { name: 'level'}
-//   ]
-// })
+<script setup name="Header" lang="ts">
+import Logo from '@/assets/images/logo.png'
 </script>
 
  <style lang="scss" scoped>
  .site__header {
-   @include e('title') {
-     @apply text-6xl;
+   @apply p-4;
 
-     font-family: $font-default;
-     color: $color-title;
+   @include e('title') {
+    @apply bg-no-repeat bg-left-top;
+
+    width: 178px;
+    height: 100px;
+    text-indent: -100vw;
+    background-size: 100%;
    }
  }
  </style>

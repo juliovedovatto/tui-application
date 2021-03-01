@@ -1,42 +1,57 @@
 <template>
-  <div class="mb-4 quick-search">
-
-  </div>
-
   <div class="container mx-auto">
     <h1>Hotel Offers</h1>
+    <quick-search-nav class="mb-4 " @change:filter="handleFilterChange" />
 
     <div>
-      <h3 class="mb-8">Paris</h3>
-      <div class="bg-blue-50 p-4 mb-4 weather">
-        <h4 class="mb-4">Weather Conditions</h4>
-        <weather-list :items="weather" />
-      </div>
-      <div class="hotels">
-        <h4 class="mb-4">Available Offers</h4>
-        <hotels-list :items="offers" />
-      </div>
+      <h3 class="mb-8">{{ selectedCity }}</h3>
+
+      <template v-if="selectedCity">
+        <div class="bg-blue-50 p-4 mb-4 weather">
+          <h4 class="mb-4">Weather Conditions</h4>
+          <weather-list :items="weather" :loading="isWeatherLoading" />
+        </div>
+        <div class="hotels">
+          <h4 class="mb-4">Available Offers</h4>
+            <hotels-list :items="offers" :loading="isHotelsLoading" />
+        </div>
+      </template>
+      <template v-else>
+        <h3>{{ t('message.no-city-selected ')}}</h3>
+      </template>
     </div>
   </div>
 </template>
 
 <script setup name="HomeView" lang="ts">
-  import { useStore } from '@/store'
-  import { onBeforeMount, computed } from 'vue'
-  import { HotelsList, WeatherList } from '@/components/lists'
+import { useStore } from '@/store'
+import { onBeforeMount, computed, ref } from 'vue'
+import { HotelsList, WeatherList } from '@/components/lists'
+import { QuickSearchNav } from '@/components/navs'
+import { useI18n } from 'vue-i18n'
 
-  const store = useStore()
+const store = useStore()
+const { t } = useI18n()
 
-  const offers = computed(() => store.getters['hotels/items'])
-  const weather = computed(() => store.getters['weather/forecast'])
+const selectedCity = ref('')
 
-  onBeforeMount(async () => {
-    store.dispatch('hotels/clear')
-    store.dispatch('weather/clear')
+const offers = computed(() => store.getters['hotels/items'])
+const weather = computed(() => store.getters['weather/forecast'])
+const isHotelsLoading = computed(() => store.getters['hotels/loading'])
+const isWeatherLoading = computed(() => store.getters['weather/loading'])
 
-    await store.dispatch('weather/list', { city: 'Paris' })
-    await store.dispatch('hotels/list', { cityCode: 'PAR', sort: 'PRICE' })
-  })
+onBeforeMount(async () => {
+  store.dispatch('hotels/clear')
+  store.dispatch('weather/clear')
+})
+
+async function handleFilterChange(city: string, cityCode: string) {
+  selectedCity.value = `${city} (${cityCode})`
+
+  store.dispatch('weather/list', { city })
+  store.dispatch('hotels/list', { cityCode, sort: 'PRICE' })
+}
+
 </script>
 
 <style lang="scss" scoped>
@@ -47,3 +62,13 @@
   height: 96px;
 }
 </style>
+
+<i18n>
+{
+  "en": {
+    "message": {
+      "no-city-selected": "Select a city to get the best Hotel deals"
+    }
+  }
+}
+</i18n>

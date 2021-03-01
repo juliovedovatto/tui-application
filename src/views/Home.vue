@@ -1,4 +1,8 @@
 <template>
+  <div class="mb-4 quick-search">
+
+  </div>
+
   <div class="container mx-auto">
     <h1>Hotel Offers</h1>
 
@@ -35,4 +39,11 @@
   })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.quick-search {
+  @apply p-8;
+
+  background-color: $tui-blue-100;
+  height: 96px;
+}
+</style>

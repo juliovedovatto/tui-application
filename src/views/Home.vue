@@ -1,15 +1,17 @@
 <template>
-  <h1>Hotel Offers</h1>
+  <div class="container mx-auto">
+    <h1>Hotel Offers</h1>
 
-  <div>
-    <h3 class="mb-8">Paris</h3>
-    <div class="bg-blue-50 p-4 mb-4 weather">
-      <h4 class="mb-4">Weather Conditions</h4>
-      <weather-list :items="weather" />
-    </div>
-    <div class="hotels">
-      <h4 class="mb-4">Available Offers</h4>
-      <hotels-list :items="offers" />
+    <div>
+      <h3 class="mb-8">Paris</h3>
+      <div class="bg-blue-50 p-4 mb-4 weather">
+        <h4 class="mb-4">Weather Conditions</h4>
+        <weather-list :items="weather" />
+      </div>
+      <div class="hotels">
+        <h4 class="mb-4">Available Offers</h4>
+        <hotels-list :items="offers" />
+      </div>
     </div>
   </div>
 </template>

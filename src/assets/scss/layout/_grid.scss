@@ -1,3 +1,30 @@
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  backgorund-color: $tui-white;
+}
+
+#app {
+  height: 100%;
+}
+
 .site {
-  @apply container mx-auto;
+  @apply h-full relative pb-20;
+
+  @include e('header') {
+
+  }
+
+  @include e('content') {
+  }
+
+  @include e('footer') {
+    @apply absolute w-full;
+    bottom: 0;
+    left: 0;
+  }
 }

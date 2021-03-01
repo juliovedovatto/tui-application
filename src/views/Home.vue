@@ -17,7 +17,9 @@
         </div>
       </template>
       <template v-else>
-        <h3>{{ t('message.no-city-selected ')}}</h3>
+        <div class="text-center">
+          <message-notification type="info">{{ t('message.no-city-selected')}}</message-notification>
+        </div>
       </template>
     </div>
   </div>
@@ -28,6 +30,7 @@ import { useStore } from '@/store'
 import { onBeforeMount, computed, ref } from 'vue'
 import { HotelsList, WeatherList } from '@/components/lists'
 import { QuickSearchNav } from '@/components/navs'
+import { MessageNotification } from '@/components/notification'
 import { useI18n } from 'vue-i18n'
 
 const store = useStore()

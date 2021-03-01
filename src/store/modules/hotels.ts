@@ -36,7 +36,8 @@ export default {
   namespaced: true,
   state: {
     items: {},
-    offer: null
+    offer: null,
+    loading: false
   },
   getters: {
     items({ items }) {
@@ -44,16 +45,25 @@ export default {
     },
     offer({ offer }) {
       return offer
+    },
+    loading({ loading }) {
+      return loading
     }
   },
   actions: {
+    toggleLoading({ commit }) {
+      commit('toggleLoading')
+    },
     async list({ commit }, payload: PlainObject)  {
+      commit('toggleLoading')
       const { cityCode, sort } = payload
       const data = await Hotels.listCity(cityCode, sort)
 
       data.forEach(item => commit('set', item))
+      commit('toggleLoading')
     },
     async offer({ commit }, payload: string) {
+      commit('toggleLoading')
       const data = await Hotels.getOffer(payload)
       const { hotel, offers: [offer] } = data
 
@@ -81,6 +91,7 @@ export default {
       }
 
       commit('setOffer', offerData)
+      commit('toggleLoading')
     },
     clear({ commit }) {
       commit('clear')
@@ -90,6 +101,10 @@ export default {
     }
   },
   mutations: {
+    toggleLoading(state) {
+      console.log('state.loading => ', state.loading)
+      state.loading = !state.loading
+    },
     set(state, payload: PlainObject) {
       const { hotel, offers } = payload
 

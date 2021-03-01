@@ -6,15 +6,23 @@ import { Weather } from '@/core/api'
 export default {
   namespaced: true,
   state: {
-    forecast: []
+    forecast: [],
+    loading: false
   },
   getters: {
     forecast({ forecast }) {
       return forecast
+    },
+    loading({ loading }) {
+      return loading
     }
   },
   actions: {
+    toggleLoading({ commit }) {
+      commit('toggleLoading')
+    },
     async list({ commit }, payload: PlainObject) {
+      commit('toggleLoading')
       const { city, days = 5 } = payload
       const data = await Weather.listCity(city, days);
 
@@ -32,12 +40,16 @@ export default {
       })
 
       commit('setForecast', forecastData)
+      commit('toggleLoading')
     },
     clear({ commit }) {
       commit('clear')
     }
   },
   mutations: {
+    toggleLoading(state) {
+      state.loading = !state.loading
+    },
     setForecast(state, payload) {
       state.forecast = payload
     },

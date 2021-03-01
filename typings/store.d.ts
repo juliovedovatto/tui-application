@@ -3,6 +3,7 @@ export interface RootStateStorable {}
 export interface HotelOfffersStateStorable {
   items: Record<string, HotelOfffersStateStorableItem>
   offer: Maybe<HotelOfferStateStorableItem>
+  loading: boolean
 }
 
 export interface HotelStorableStateItem {
@@ -47,5 +48,6 @@ export interface HotelOfferStateStorableItem {
 }
 
 export interface WeatherStateStorable {
-  forecast: PlainObject[]
+  forecast: PlainObject[],
+  loading: boolean
 }

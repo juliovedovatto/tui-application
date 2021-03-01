@@ -1,4 +1,8 @@
 {
+  "actions": {
+    "details": "Details",
+    "get-offer": "Get Offer"
+  },
   "date": {
     "full": "MM/dd/YYYY",
     "short": "MM/dd",

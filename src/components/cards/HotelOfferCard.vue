@@ -35,14 +35,3 @@ const { t } = useI18n()
   @include e('actions') {}
 }
 </style>
-
-<i18n>
-{
-  "en": {
-    "actions": {
-      "details": "Details",
-      "get-offer": "Get Offer"
-    }
-  }
-}
-</i18n>

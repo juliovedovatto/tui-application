@@ -18,5 +18,8 @@
       "short": "h:mm a",
       "full": "h:mm a"
     }
+  },
+  "error": {
+    "not-available": "Not Available"
   }
 }

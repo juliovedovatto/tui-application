@@ -1,4 +1,4 @@
-import { HOTEL_API_KEY, HOTEL_API_SECRET } from '@/core/config'
+import { HOTEL_API_KEY, HOTEL_API_SECRET, LOCALE } from '@/core/config'
 
 import API from '../main'
 import { objToParams } from '@/core/helpers/url'
@@ -78,10 +78,19 @@ export class Hotels extends API {
       {
         params: {
           cityCode,
-          sort
+          sort,
+          lang: LOCALE
         }
       }
     )
+
+    return data
+  }
+
+  async getOffer(offerId: string): Promise<PlainObject> {
+    await this.preflight();
+
+    const { data: { data } } = await this.request.get(`v2/shopping/hotel-offers/${offerId}`, { params: { lang: LOCALE } })
 
     return data
   }

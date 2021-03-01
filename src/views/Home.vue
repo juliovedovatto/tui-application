@@ -1,12 +1,11 @@
 <template>
+  <quick-search-nav class="mb-4 " @change:filter="handleFilterChange" />
   <div class="container mx-auto">
-    <h1>Hotel Offers</h1>
-    <quick-search-nav class="mb-4 " @change:filter="handleFilterChange" />
 
     <div>
-      <h3 class="mb-8">{{ selectedCity }}</h3>
-
       <template v-if="selectedCity">
+        <h2 class="mb-4">Hotel Offers for {{ selectedCity }}</h2>
+
         <div class="bg-blue-50 p-4 mb-4 weather">
           <h4 class="mb-4">Weather Conditions</h4>
           <weather-list :items="weather" :loading="isWeatherLoading" />
@@ -49,7 +48,7 @@ onBeforeMount(async () => {
 })
 
 async function handleFilterChange(city: string, cityCode: string) {
-  selectedCity.value = `${city} (${cityCode})`
+  selectedCity.value = city
 
   store.dispatch('weather/list', { city })
   store.dispatch('hotels/list', { cityCode, sort: 'PRICE' })

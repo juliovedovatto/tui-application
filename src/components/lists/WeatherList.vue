@@ -1,24 +1,35 @@
 <template>
   <div class="weather__list">
-    <div class="flex">
-      <div :key="`weather-${i}`" class="text-center mr-4 weather" v-for="(item, i) in items">
-        <time :datetime="item.date">{{ formatDate(item.date) }}</time>
-        <picture class="block">
-          <img :src="item.icon" />
-        </picture>
-        <strong>{{ item.text }}</strong>
-      </div>
-    </div>
+    <template v-if="!loading">
+
+      <template v-if="hasItems">
+        <div class="flex">
+          <div :key="`weather-${i}`" class="text-center mr-4 weather" v-for="(item, i) in items">
+            <time :datetime="item.date">{{ formatDate(item.date) }}</time>
+            <picture class="block">
+              <img :src="item.icon" />
+            </picture>
+            <strong>{{ item.text }}</strong>
+          </div>
+        </div>
+      </template>
+      <template v-else>
+        <h3>{{ t('error.no-items') }}</h3>
+      </template>
+
+    </template>
+    <template v-else>
+      <loading-markup :message="t('message.loading')" />
+    </template>
   </div>
 </template>
 
 <script setup name="HotelsList" lang="ts">
-// TODO: add tooltip to show full text
-
-import { defineProps } from "vue"
+import { computed, defineProps } from "vue"
 import { useI18n } from "vue-i18n"
 
 import { formatLocale } from '@/core/helpers/date'
+import { LoadingMarkup } from '@/components/markup'
 
 const { t } = useI18n()
 
@@ -26,8 +37,14 @@ const props = defineProps({
   items: {
     type: Object,
     default: () => ({})
+  },
+  loading: {
+    type: Boolean,
+    default: false
   }
 })
+
+const hasItems = computed(() => !!Object.values(props.items).length)
 
 function formatDate(date: string): string {
   return formatLocale(date, t('date.short'))
@@ -41,3 +58,16 @@ function formatDate(date: string): string {
   }
 }
 </style>
+
+<i18n>
+{
+  "en": {
+    "message": {
+      "loading": "Gethering Forecast info..."
+    },
+    "error": {
+      "no-items": "There are no weather information available for the selected city :("
+    }
+  }
+}
+</i18n>

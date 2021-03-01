@@ -5,18 +5,21 @@
     <div class="site__content">
       <router-view />
     </div>
+
+    <site-footer />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-import { Header } from '@/components/layout'
+import { Header, Footer } from '@/components/layout'
 
 export default defineComponent({
   name: 'App',
   components: {
-    SiteHeader: Header
+    SiteHeader: Header,
+    SiteFooter: Footer
   }
 })
 </script>

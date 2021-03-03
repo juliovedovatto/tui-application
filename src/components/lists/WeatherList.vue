@@ -14,7 +14,7 @@
         </div>
       </template>
       <template v-else>
-        <h3>{{ t('error.no-items') }}</h3>
+        <message-notification type="error">{{ t('error.no-items')}}</message-notification>
       </template>
 
     </template>
@@ -28,8 +28,10 @@
 import { computed, defineProps } from "vue"
 import { useI18n } from "vue-i18n"
 
-import { formatLocale } from '@/core/helpers/date'
 import { LoadingMarkup } from '@/components/markup'
+import { MessageNotification } from '@/components/notification'
+
+import { formatLocale } from '@/core/helpers/date'
 
 const { t } = useI18n()
 

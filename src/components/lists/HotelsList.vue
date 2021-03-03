@@ -25,7 +25,7 @@
         </div>
       </template>
       <template v-else>
-        <h3>{{ t('error.no-items') }}</h3>
+        <message-notification type="error">{{ t('error.no-items')}}</message-notification>
       </template>
 
     </template>
@@ -37,14 +37,15 @@
 
 <script setup name="HotelsList" lang="ts">
 // TODO: add tooltip to show full text
-
 import { computed, defineProps } from "vue"
-import HotelMarkupImage from '@images/markup/hotel-markup.svg'
+import { useI18n } from "vue-i18n"
 
 import { HotelOfferCard } from '@/components/cards'
 import { Truncate } from '@/components/readmore'
 import { LoadingMarkup } from '@/components/markup'
-import { useI18n } from "vue-i18n"
+import { MessageNotification } from '@/components/notification'
+
+import HotelMarkupImage from '@images/markup/hotel-markup.svg'
 
 const { t } = useI18n()
 

@@ -3,7 +3,7 @@
 
 
 .button {
-  @apply px-4 py-2 rounded text-lg inline-block;
+  @apply px-4 py-2 rounded text-lg inline-block font-bold;
 
   background-color: $tui-grey-25u;
   border: 1px solid $tui-grey-75;
@@ -34,5 +34,18 @@
     &:hover {
       background-color: $tui-dark-25;
     }
+  }
+
+  @include m('link') {
+    background: unset;
+    border: unset;
+  }
+
+  @include m('lg') {
+    @apply text-2xl py-4 px-16;
+  }
+
+  @include m('xl') {
+    @apply text-4xl py-4 px-16;
   }
 }

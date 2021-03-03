@@ -102,7 +102,6 @@ export default {
   },
   mutations: {
     toggleLoading(state) {
-      console.log('state.loading => ', state.loading)
       state.loading = !state.loading
     },
     set(state, payload: PlainObject) {

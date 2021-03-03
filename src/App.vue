@@ -15,11 +15,16 @@ import { defineComponent } from 'vue'
 
 import { Header, Footer } from '@/components/layout'
 
+import { pageViewportHeightObserver } from '@/core/helpers/observer'
+
 export default defineComponent({
   name: 'App',
   components: {
     SiteHeader: Header,
     SiteFooter: Footer
+  },
+  created() {
+    pageViewportHeightObserver()
   }
 })
 </script>

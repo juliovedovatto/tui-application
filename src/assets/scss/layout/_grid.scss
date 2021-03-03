@@ -1,5 +1,5 @@
 html, body {
-  min-height: 100vh;
+  min-height: var(--viewport-height, 100vh);
   margin: 0;
   padding: 0;
 }
@@ -9,11 +9,12 @@ body {
 }
 
 #app {
-  min-height: 100vh;
+  min-height: var(--viewport-height, 100vh);
 }
 
 .site {
   @apply h-full relative pb-20;
+  min-height: var(--viewport-height, 100vh);
 
   @include e('header') {
 

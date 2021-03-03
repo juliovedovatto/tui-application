@@ -1,26 +1,23 @@
 <template>
   <quick-search-nav class="mb-4 " @change:filter="handleFilterChange" />
   <div class="container mx-auto">
+    <template v-if="selectedCity">
+      <h2 class="mb-4">Hotel Offers for {{ selectedCity }}</h2>
 
-    <div>
-      <template v-if="selectedCity">
-        <h2 class="mb-4">Hotel Offers for {{ selectedCity }}</h2>
-
-        <div class="bg-blue-50 p-4 mb-4 weather">
-          <h4 class="mb-4">Weather Conditions</h4>
-          <weather-list :items="weather" :loading="isWeatherLoading" />
-        </div>
-        <div class="hotels">
-          <h4 class="mb-4">Available Offers</h4>
-            <hotels-list :items="offers" :loading="isHotelsLoading" />
-        </div>
-      </template>
-      <template v-else>
-        <div class="text-center">
-          <message-notification type="info">{{ t('message.no-city-selected')}}</message-notification>
-        </div>
-      </template>
-    </div>
+      <div class="bg-blue-50 p-4 mb-4 weather">
+        <h4 class="mb-4">Weather Conditions</h4>
+        <weather-list :items="weather" :loading="isWeatherLoading" />
+      </div>
+      <div class="hotels">
+        <h4 class="mb-4">Available Offers</h4>
+          <hotels-list :items="offers" :loading="isHotelsLoading" />
+      </div>
+    </template>
+    <template v-else>
+      <div class="text-center">
+        <message-notification type="info">{{ t('message.no-city-selected')}}</message-notification>
+      </div>
+    </template>
   </div>
 </template>
 

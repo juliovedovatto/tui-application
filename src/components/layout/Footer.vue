@@ -4,7 +4,7 @@
       Author: Julio Vedovatto &lt;<a href="mailto:juliovedovatto@gmail.com?Subject=Awesome%20Test%20Application!!">juliovedovatto@gmail.com</a>&gt;
     </div>
     <div class="site__footer__credits">
-      Made with &#10084;&#65039; using <img :src="LogoVue" alt="Vue 3" title="Vue 3" /> and <img :src="LogoVite" alt="Vite" title="Vite" />
+      Made with &#10084;&#65039; &nbsp; using &nbsp;&nbsp; <img :src="LogoVue" alt="Vue 3" title="Vue 3" /> and <img :src="LogoVite" alt="Vite" title="Vite" />
     </div>
   </footer>
 </template>

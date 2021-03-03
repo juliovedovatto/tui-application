@@ -1,6 +1,6 @@
 <template>
 <div class="quick-search">
-  <div class="flex">
+  <div class="container mx-auto flex">
     <div class="quick-search__filters">
       <strong class="mr-4">Filter Offers by</strong>
       <dropdown-field v-model="country" :options="countries" placeholder="Select a Contry" class="mr-4" @change="handleCountryChange"  />

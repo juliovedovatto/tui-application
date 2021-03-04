@@ -3,8 +3,8 @@
   <div class="container mx-auto flex">
     <div class="quick-search__filters">
       <strong class="mr-4">Filter Offers by</strong>
-      <dropdown-field v-model="country" :options="countries" placeholder="Select a Contry" class="mr-4" @change="handleCountryChange"  />
-      <dropdown-field ref="componentCity" v-model="city" :options="availableCities" placeholder="Select a City"  />
+      <dropdown-field v-model="country" :options="countries" :value="currentCountry" placeholder="Select a Contry" class="mr-4" @change="handleCountryChange"  />
+      <dropdown-field ref="componentCity" v-model="city" :options="availableCities" :value="currentyCityValue" placeholder="Select a City"  />
     </div>
     <div class="quick-search__sorting">
 
@@ -14,9 +14,11 @@
 </template>
 
 <script setup name="QuickSearchNav" lang="ts">
-import { computed, defineEmit, ref, watch } from 'vue'
+import { computed, defineEmit, onBeforeMount, ref, watch } from 'vue'
 import { DropdownField } from '@/components/form'
+import { useStore } from '@/store'
 
+const store = useStore()
 const emit = defineEmit(['change:filter', 'change:sort'])
 
 const country = ref('')
@@ -25,6 +27,17 @@ const componentCity = ref()
 
 const availableCities = computed(() => {
   return getCities(country.value)
+})
+const currentCountry = computed(() => store.getters['currentCountry'])
+const currentCity = computed(() => store.getters['currentCity'])
+const currentyCityValue = computed(() => {
+  if (!currentCountry.value) {
+    return ''
+  }
+
+  const { value } = getCity(currentCity.value) || {}
+
+  return value || ''
 })
 
 const countries = [
@@ -63,7 +76,16 @@ watch(city, (value) => {
   }
 
   const { label, cityCode } = getCity(city.value)
-  emit('change:filter', label, cityCode)
+  emit('change:filter', country.value, label, cityCode)
+})
+
+onBeforeMount(() => {
+  if (currentCountry.value && currentCity.value) {
+    country.value = currentCountry.value
+
+    const { value } = getCity(currentCity.value)
+    city.value = value as string
+  }
 })
 
 function getCities(country: string): Record<string, unknown>[] {
@@ -80,7 +102,7 @@ function getCity(city: string) {
   }
 
   const cities = getCities(country.value)
-  const [ data ] = cities.filter(({ value }) => value === city)
+  const [ data ] = cities.filter(({ label, value }) => label === city || value === city)
 
   return data
 }

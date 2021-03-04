@@ -1,7 +1,8 @@
 {
   "actions": {
     "details": "Details",
-    "get-offer": "Get Offer"
+    "get-offer": "Get Offer",
+    "back": "Go Back"
   },
   "date": {
     "full": "MM/dd/YYYY",

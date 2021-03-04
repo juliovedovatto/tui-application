@@ -13,7 +13,7 @@
 </template>
 
 <script setup name="DropdownField" lang="ts">
-import { defineProps, ref, watch, defineEmit, computed, useContext, onMounted } from 'vue'
+import { defineProps, ref, watch, defineEmit, computed, useContext, onBeforeMount } from 'vue'
 import Multiselect from '@vueform/multiselect'
 
 const props = defineProps({
@@ -61,7 +61,17 @@ watch(model, () => {
   emit('update:modelValue', model.value)
 })
 
+onBeforeMount(() => {
+  const { value } = props
+  if (value) {
+    model.value = value
+  }
+})
+
 expose({
+  component() {
+    return component
+  },
   clear() {
     component.value?.clear()
   }

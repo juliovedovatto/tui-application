@@ -13,9 +13,12 @@ export function useStore(): Store<RootStateStorable> {
   return baseUseStore(key)
 }
 
-export default createStore({
+export default createStore<RootStateStorable>({
   state() {
-    return {}
+    return {
+      country: '',
+      city: ''
+    }
   },
   getters,
   mutations,

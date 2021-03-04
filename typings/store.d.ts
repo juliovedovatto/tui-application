@@ -1,4 +1,7 @@
-export interface RootStateStorable {}
+export interface RootStateStorable {
+  country: string,
+  city: string
+}
 
 export interface HotelOfffersStateStorable {
   items: Record<string, HotelOfffersStateStorableItem>

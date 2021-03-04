@@ -23,7 +23,7 @@
 
 <script setup name="HomeView" lang="ts">
 import { useStore } from '@/store'
-import { onBeforeMount, computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { HotelsList, WeatherList } from '@/components/lists'
 import { QuickSearchNav } from '@/components/navs'
 import { MessageNotification } from '@/components/notification'
@@ -34,19 +34,25 @@ const { t } = useI18n()
 
 const selectedCity = ref('')
 
-const offers = computed(() => store.getters['hotels/items'])
-const weather = computed(() => store.getters['weather/forecast'])
 const isHotelsLoading = computed(() => store.getters['hotels/loading'])
 const isWeatherLoading = computed(() => store.getters['weather/loading'])
+const offers = computed(() => store.getters['hotels/items'])
+const weather = computed(() => store.getters['weather/forecast'])
+const currentCountry = computed(() => store.getters['currentCountry'])
+const currentCity = computed(() => store.getters['currentCity'])
 
-onBeforeMount(async () => {
-  store.dispatch('hotels/clear')
-  store.dispatch('weather/clear')
-})
-
-async function handleFilterChange(city: string, cityCode: string) {
+async function handleFilterChange(country: string, city: string, cityCode: string) {
   selectedCity.value = city
 
+  if (currentCountry.value === country && currentCity.value === city) {
+    return
+  }
+
+  store.commit('setCountry', country)
+  store.commit('setCity', city)
+
+  store.dispatch('hotels/clear')
+  store.dispatch('weather/clear')
   store.dispatch('weather/list', { city })
   store.dispatch('hotels/list', { cityCode, sort: 'PRICE' })
 }

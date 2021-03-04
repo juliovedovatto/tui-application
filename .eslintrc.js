@@ -1,6 +1,6 @@
 const { NODE_ENV = '' } = process.env
-
 const isEnvProduction = NODE_ENV === 'production'
+
 
 module.exports = {
   root: true,
@@ -58,6 +58,7 @@ module.exports = {
       {
         "allowedNames": ["self"]
       }
-    ]
+    ],
+    '@typescript-eslint/no-unused-vars': 'off'
   }
 }

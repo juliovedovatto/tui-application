@@ -9,6 +9,7 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "noUnusedLocals": true,
     "lib": ["esnext", "dom"],
     "types": ["node", "vite/client", "@intlify/vite-plugin-vue-i18n/client"],
     "paths": {
@@ -18,5 +19,8 @@
     },
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "typings/**/*.d.ts"],
-  "exclude": ["node_modules", ".vscode"]
+  "exclude": ["node_modules", ".vscode"],
+  "plugins": [
+    "@vuedx/typescript-plugin-vue"
+  ]
 }

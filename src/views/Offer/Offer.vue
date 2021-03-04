@@ -113,29 +113,6 @@ function taxIncludedLabel(isIncluded: boolean) {
 
 </script>
 
-<i18n>
-{
-  "en": {
-    "title": {
-      "page-title": "Offers"
-    },
-    "label": {
-      "category": "Category",
-      "checkin-details": "Checkin Details",
-      "tax-included": "Included",
-      "tax-not-included": "Not Included",
-      "pricing": "Pricing",
-      "price": "Base Price",
-      "taxes": "Taxes",
-      "price-total": "Total"
-    },
-    "message": {
-      "back": "Isn't that what you're looking for? Try back to results and see other offers :)"
-    }
-  }
-}
-</i18n>
-
 <style lang="scss" scoped>
 .offer {
   @include e('header') {
@@ -168,3 +145,26 @@ function taxIncludedLabel(isIncluded: boolean) {
   }
 }
 </style>
+
+<i18n>
+{
+  "en": {
+    "title": {
+      "page-title": "Hotel Offer"
+    },
+    "label": {
+      "category": "Category",
+      "checkin-details": "Checkin Details",
+      "tax-included": "Included",
+      "tax-not-included": "Not Included",
+      "pricing": "Pricing",
+      "price": "Base Price",
+      "taxes": "Taxes",
+      "price-total": "Total"
+    },
+    "message": {
+      "back": "Isn't that what you're looking for? Try back to results and see other offers :)"
+    }
+  }
+}
+</i18n>

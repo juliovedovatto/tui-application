@@ -2,7 +2,32 @@
 
 This is a simple application for TUI Fronnt End job opportunity.
 
+## Project Notes
+
+Tecnologies used:
+
+* Vue 3 + TypeScript
+* Vite
+* Windi CSS
+
+Required Environment variables:
+
+```
+VUE_APP_WEATHER_API_KEY
+VUE_APP_HOTEL_API_KEY
+VUE_APP_HOTEL_API_SECRET
+```
+
+* `VUE_APP_WEATHER_API_KEY`: Weather API Key (https://www.weatherapi.com/)
+* `VUE_APP_HOTEL_API_KEY`:  Amadeus API Key (https://developers.amadeus.com/)
+* `VUE_APP_HOTEL_API_SECRET`:  Amadeus API Secret
+
+
+
 ## Development
+
+Make a copy of `.env.sample` file to `.env` file in order to obtain the correct environment variables to test/develop application.
+
 
 ### Setup
 
@@ -28,10 +53,6 @@ npm run build
 ```
 npm run serve
 ```
-
-
-## Project Notes
-
 
 ### Recommended IDE Setup
 

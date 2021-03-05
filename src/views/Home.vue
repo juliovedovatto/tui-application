@@ -1,5 +1,5 @@
 <template>
-  <quick-search-nav class="mb-4 " @change:filter="handleFilterChange" />
+  <quick-search-nav class="mb-4 " @change:filter="handleFilterChange" @change:sort="handleSortingChange" />
   <div class="container mx-auto">
     <template v-if="selectedCity">
       <h2 class="mb-4">Hotel Offers for {{ selectedCity }}</h2>
@@ -28,6 +28,7 @@ import { HotelsList, WeatherList } from '@/components/lists'
 import { QuickSearchNav } from '@/components/navs'
 import { MessageNotification } from '@/components/notification'
 import { useI18n } from 'vue-i18n'
+import { HotelOffersSortOptions } from '@/core/config'
 
 const store = useStore()
 const { t } = useI18n()
@@ -48,13 +49,18 @@ async function handleFilterChange(country: string, city: string, cityCode: strin
     return
   }
 
-  store.commit('setCountry', country)
-  store.commit('setCity', city)
+  store.commit('setCountry', String(country))
+  store.commit('setCity', String(city))
 
   store.dispatch('hotels/clear')
   store.dispatch('weather/clear')
   store.dispatch('weather/list', { city })
   store.dispatch('hotels/list', { cityCode, sort: 'PRICE' })
+}
+
+async function handleSortingChange(sort: HotelOffersSortOptions): void {
+  // TODO: implement sorting
+  console.warn('Sorting is not available at this time :(')
 }
 
 </script>

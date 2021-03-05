@@ -20,6 +20,19 @@
       "full": "h:mm a"
     }
   },
+  "choices": {
+    "HotelOffersSortOptions": {
+      "PRICE_ASC": "Price (Ascending)",
+      "PRICE_DESC": "Price (Descending)",
+      "NAME": "Name"
+    },
+    "Countries": {
+      "PORTUGAL": "Portugal",
+      "SPAIN": "Spain",
+      "ITALY": "Italy",
+      "BRAZIL": "Brazil"
+    }
+  },
   "error": {
     "not-available": "Not Available"
   }

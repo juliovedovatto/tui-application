@@ -9,3 +9,4 @@
 * Implement Tests.
 * Finish implementing i18n texts.
 * Add feature to change  locale dynamically
+* Improve Typescript typings
